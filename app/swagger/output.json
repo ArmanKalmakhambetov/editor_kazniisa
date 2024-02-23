@@ -1,0 +1,168 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Todo API",
+    "description": "My todo API",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [],
+  "schemes": ["http"],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/api/store/allproducts": {
+      "get": {
+        "tags": [],
+        "description": "Get all products",
+        "responses": {
+          "200": {
+            "description": "Array of all products",
+            "schema": {
+              "$ref": "#/definitions/AllProducts"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/store/product/{id}": {
+      "get": {
+        "tags": [],
+        "description": "Get product by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Existing product ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product with provided ID",
+            "schema": {
+              "$ref": "#/definitions/Changes"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [],
+        "description": "Update existing product",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Existing product ID"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Existing product changes",
+            "schema": {
+              "$ref": "#/definitions/Changes"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product updated successfully"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [],
+        "description": "Remove existing product",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Existing product ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product deleted successfully"
+          },
+          "404": {
+            "description": "Product not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AllProducts": {
+        "type": "array",
+        "description": "Array of products",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "example": 1
+            },
+            "mainType": {
+              "type": "string",
+              "example": "Type"
+            },
+            "type": {
+              "type": "string",
+              "example": "Type"
+            },
+            "name": {
+              "type": "string",
+              "example": "Product Name"
+            }
+          }
+        }
+      },      
+    "Changes": {
+      "type": "object",
+      "properties": {
+        "mainType": {
+          "type": "string",
+          "example": "Type"
+        },
+        "type": {
+          "type": "string",
+          "example": "Type"
+        },
+        "name": {
+          "type": "string",
+          "example": "Product Name"
+        },
+        "price": {
+          "type": "number",
+          "example": 10.99
+        },
+        "count": {
+          "type": "integer",
+          "example": 1
+        },
+        "image": {
+          "type": "string",
+          "example": "https://example.com/image.jpg"
+        }
+      }
+    }
+  }
+}
