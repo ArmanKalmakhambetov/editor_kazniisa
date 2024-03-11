@@ -22,6 +22,7 @@ async function getAllUserProjects(req, res) {
 async function createProject(req, res) {
     try {
         const { project_name } = req.body;
+        //TODO: заменить на аутентифицированного юзера
         const userId = 1; // Предполагается, что информация о текущем пользователе доступна через req.user
 
         // Создаем новый проект

@@ -3,11 +3,7 @@ const sequelize = require('../../../config/db');
 const Role = require('./role');
 
 const UserEntity = sequelize.define('UserEntity', {
-    id: {
-        type: DataTypes.BIGINT,
-        primaryKey: true,
-        allowNull: false
-    },
+    
     fullName: {
         type: DataTypes.STRING(255)
     },

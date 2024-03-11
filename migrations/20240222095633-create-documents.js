@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.STRING(255)
       },
       document_content: {
-        type: Sequelize.TEXT
+        type: Sequelize.JSON
       }
     });
   },
